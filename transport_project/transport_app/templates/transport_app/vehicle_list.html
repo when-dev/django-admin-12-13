@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Транспорт и Владельцы</title>
+</head>
+<body>
+    <h1>Список Транспортных Средств и Владельцев</h1>
+    <a href="{% url 'add_vehicle' %}">Добавить Транспорт</a> |
+    <a href="{% url 'add_owner' %}">Добавить Владельца</a> |
+    <a href="{% url 'add_ownership' %}">Добавить Владение</a>
+    <table border="1">
+        <tr>
+            <th>Модель</th>
+            <th>Год</th>
+            <th>Владелец</th>
+        </tr>
+        {% for ownership in ownerships %}
+        <tr>
+            <td>{{ ownership.vehicle.model }}</td>
+            <td>{{ ownership.vehicle.year }}</td>
+            <td>{{ ownership.owner.name }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
